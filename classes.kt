@@ -248,3 +248,67 @@ fun main() {
         return super.speciesInfo()
     }
 
+
+
+4.**African Music Festival:** You're in charge of organizing a Pan-African music
+festival. Many artists from different countries, each with their own musical style
+and instruments are scheduled to perform. You need to write a program to
+manage the festival lineup, schedule, and stage arrangements. Think about how
+you might model the `Artist`, `Performance`, and `Stage` classes, and consider
+how you might use inheritance if there are different types of performances or stages.
+
+
+
+
+
+
+
+
+open class Artist(val name: String, val country: String, val musicType: String, val instruments: List<String>) {
+    fun artistDetail() {
+        println("name: $name, country: $country, musicType: $musicType, instruments: ${instruments.joinToString(", ")}")
+    }
+}
+class Performance(name: String, country: String, musicType: String, instruments: List<String>, val stageTime: String) :
+    Artist(name, country, musicType, instruments) {
+    fun scheduling() {
+        println("name: $name, musicType: $musicType, time: $stageTime")
+    }
+    fun playInstrument(instrument: String) {
+        if (instruments.contains(instrument)) {
+            println("$name is playing $instrument")
+        } else {
+            println("$name is not playing $instrument")
+        }
+    }
+}
+
+fun main() {
+    val artist = Artist("jayz", "Canada", "hiphop", listOf("guitar", "piano"))
+    artist.artistDetail()
+    val perform = Performance("sautisol", "Kenya", "bongo", listOf("guitar", "piano"), "2 hours")
+    perform.scheduling()
+    perform.playInstrument("guitar")
+    val stage = Stage("Bridget blue", "Kenya", "gospel", listOf("piano", "harp", "violin"), 100, "Nakuru")
+    stage.performance()
+    val artist1 = Artist("Nigeria", "Fela Kuti", listOf("guitar", "drums"))
+    val artist2 = Artist("Ghana", "Kofi Annan", listOf("piano", "violin"))
+    val artist3 = Artist("Kenya", "Wangari Maathai", listOf("flute", "harp"))
+    val performance1 = Performance(artist1.name, artist1.country, artist1.musicType, artist1.instruments, "Friday, 10am")
+    val performance2 = Performance(artist2.name, artist2.country, artist2.musicType, artist2.instruments, "Saturday, 2pm")
+    val performance3 = Performance(artist3.name, artist3.country, artist3.musicType, artist3.instruments, "Sunday, 4pm")
+    val stage1 = Stage("Open-air stage", "The Great Lawn", 10000)
+
+
+
+
+
+
+val stage2 = Stage("Indoor stage", "The Concert Hall", 5000)
+    println("The festival lineup is:")
+    listOf(performance1, performance2, performance3).forEach { performance ->
+        println(performance.festivalLineup?.let {
+            "name: ${it.name}, country: ${it.country}, musicType: ${it.musicType}, instruments: ${it.instruments.joinToString(", ")}"
+        })
+    }
+}
