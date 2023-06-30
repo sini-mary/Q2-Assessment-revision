@@ -165,3 +165,77 @@ class Story {
     lion.fastKillers();
     deer.addDefenseMechanism('speed');
     console.log(deer.defenseMechanisms);
+
+
+    // 4.**African Music Festival:** You're in charge of organizing a Pan-African music
+    // festival. Many artists from different countries, each with their own musical style
+    // and instruments are scheduled to perform. You need to write a program to
+    // manage the festival lineup, schedule, and stage arrangements. Think about how
+    // you might model the `Artist`, `Performance`, and `Stage` classes, and consider
+    // how you might use inheritance if there are different types of performances or stages.
+
+
+    class Artist {
+      constructor(name, country, musicType, instruments) {
+        this.name = name;
+        this.country = country;
+        this.musicType = musicType;
+        this.instruments = instruments;
+      }
+       artistDetail() {
+        console.log(`name: ${this.name}, country: ${this.country}, musicType: ${this.musicType}, instruments: ${this.instruments.join(', ')}`);
+      }
+    }
+     class Performance extends Artist {
+      constructor(name, country, musicType, instruments, stageTime) {
+        super(name, country, musicType, instruments);
+        this.stageTime = stageTime;
+      }
+       scheduling() {
+        console.log(`name: ${this.name}, musicType: ${this.musicType}, time: ${this.stageTime}`);
+      }
+       playInstrument(instrument) {
+        if (this.instruments.includes(instrument)) {
+          console.log(`${this.name} is playing ${instrument}`);
+        } else {
+          console.log(`${this.name} is not playing ${instrument}`);
+        }
+   
+   
+   
+   
+   
+  
+    }
+     class Stage extends Artist {
+      constructor(name, country, musicType, instruments, capacity, location) {
+        super(name, country, musicType, instruments);
+        this.capacity = capacity;
+        this.location = location;
+      }
+       performance() {
+        console.log(`name: ${this.name}, country: ${this.country}, musicType: ${this.musicType}, capacity: ${this.capacity}, place: ${this.location}`);
+      }
+    }
+     const artist = new Artist("jayz", "Canada", "hiphop", ["guitar", "piano"]);
+    artist.artistDetail();
+     const perform = new Performance("sautisol", "Kenya", "bongo", ["guitar", "piano"], "2 hours");
+    perform.scheduling();
+    perform.playInstrument("guitar");
+     const stage = new Stage("Bridget blue", "Kenya", "gospel", ["piano", "harp", "violin"], 100, "Nakuru");
+    stage.performance();
+     class FestivalLineup extends Artist {
+      constructor(country, name, instruments) {
+        super(country, name, instruments);
+      }
+    }
+    const artist1 = new Artist("Nigeria", "Fela Kuti", ["guitar", "drums"]);
+    const artist2 = new Artist("Ghana", "Kofi Annan", ["piano", "violin"]);
+    const artist3 = new Artist("Kenya", "Wangari Maathai", ["flute", "harp"]);
+     const performance1 = new Performance(artist1, "Friday, 10am", "The Fela Kuti Band");
+  
+   const performance2 = new Performance(artist2, "Saturday, 2pm", "The Kofi Annan Quartet");
+    const performance3 = new Performance(artist3, "Sunday, 4pm", "The Wangari Maathai Trio");
+     const stage1 = new Stage("Open-air stage", "The Great Lawn", 10000);
+    const stage2 = new Stage("Indoor stage", "The Concert Hall", 5000);
+     console.log("The festival lineup is:");
