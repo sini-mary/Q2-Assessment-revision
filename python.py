@@ -140,3 +140,64 @@ animal2 = Prey("Antellope", "grass", "20yrs", "seasonal", "lying flat on ground"
 print(animal2.species_info())
 
 
+# 4.**African Music Festival:** You're in charge of organizing a Pan-African music
+# festival. Many artists from different countries, each with their own musical style
+# and instruments are scheduled to perform. You need to write a program to
+# manage the festival lineup, schedule, and stage arrangements. Think about how
+# you might model the `Artist`, `Performance`, and `Stage` classes, and consider
+# how you might use inheritance if there are different types of performances or stages.
+
+
+
+class Artist:
+   def __init__(self, name, country, music_type, instruments):
+       self.name = name
+       self.country = country
+       self.music_type = music_type
+       self.instruments = instruments
+   def artist_detail(self):
+       print(f"name: {self.name}, country: {self.country}, musicType: {self.music_type}, instruments: {', '.join(self.instruments)}")
+class Performance(Artist):
+   def __init__(self, name, country, music_type, instruments, stage_time):
+       super().__init__(name, country, music_type, instruments)
+       self.stage_time = stage_time
+   def scheduling(self):
+       print(f"name: {self.name}, musicType: {self.music_type}, time: {self.stage_time}")
+   def play_instrument(self, instrument):
+        
+          print(f"{self.name} is not playing {instrument}")
+       if instrument in self.instruments:
+           print(f"{self.name} is playing {instrument}")
+       else:
+           print(f"{self.name} is not playing {instrument}")
+class Stage(Artist):
+   def __init__(self, name, country, music_type, instruments, capacity, location):
+       super().__init__(name, country, music_type, instruments)
+       self.capacity = capacity
+       self.location = location
+   def performance(self):
+       print(f"name: {self.name}, country: {self.country}, musicType: {self.music_type}, capacity: {self.capacity}, place: {self.location}")
+artist = Artist("jayz", "Canada", "hiphop", instruments=["guitar", "piano"])
+artist.artist_detail()
+perform = Performance("sautisol", "Kenya", "bongo", instruments=["guitar", "piano"], stage_time="2 hours")
+perform.scheduling()
+perform.play_instrument("guitar")
+stage = Stage("Bridget blue", "Kenya", "gospel", instruments=["piano", "harp", "violin"], capacity=100, location="Nakuru")
+stage.performance()
+
+print("The festival lineup is:")
+for performance in [performance1, performance2, performance3]:
+   print(performance.festival_lineup.__dict__)
+# Print the schedule
+print("\nThe schedule is:")
+for performance in [performance1, performance2, performance3]:
+   print(performance.schedule)
+# Print the stages
+print("The stages are:")
+for stage in [stage1, stage2]:
+   print(stage.stage_arrangements)
+
+
+
+
+
