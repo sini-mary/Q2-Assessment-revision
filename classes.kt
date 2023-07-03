@@ -312,3 +312,34 @@ val stage2 = Stage("Indoor stage", "The Concert Hall", 5000)
         })
     }
 }
+
+
+
+
+
+// 5. Create a class called Product with attributes for name, price, and quantity.
+// Implement a method to calculate the total value of the product (price * quantity).
+// Create multiple objects of the Product class and calculate their total values.
+
+
+
+fun main(){
+var product1=Product("Mangoes",200.0,5)
+var product2=Product("Mangoes",350.0,5)
+println(product1.getTotalValue())
+println(product2.getTotalValue())
+
+}
+
+
+class Product(var name: String, var price: Double, var quantity: Int) {
+    fun getTotalValue(): Double? {
+        if (price > 0 && quantity > 0) {
+            return price * quantity
+        } else {
+            return null
+        }
+    }
+ }
+ 
+
