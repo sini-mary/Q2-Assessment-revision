@@ -198,4 +198,49 @@ class Story {
         totalValue += products[i].calculateTotalValue();
       }
     }
-     console.log("Total value of all products:", totalValue);    
+     console.log("Total value of all products:", totalValue);  
+     
+
+    //  6. Implement a class called Student with attributes for name, age, and grades (a
+    //   list of integers). Include methods to calculate the average grade, display the
+    //   student information, and determine if the student has passed (average grade >=
+    //   60). Create objects for the Student class and demonstrate the usage of these
+    //   methods.
+      
+    class Student {
+      constructor(name, age, grades) {
+        this.name = name;
+        this.age = age;
+        this.grades = grades;
+      }
+      calculateAverageGrade() {
+        const sum = this.grades.reduce((total, grade) => total + grade, 0);
+        return sum / this.grades.length;
+      }
+      hasPassed() {
+        const averageGrade = this.calculateAverageGrade();
+        return averageGrade >= 60 && this.grades.length >= 3;
+      }
+      displayHighestGrade() {
+        const highestGrade = Math.max(...this.grades);
+        console.log("Highest Grade:", highestGrade);
+      }
+    }
+    const students = [
+      new Student("Mercy Jebichi", 18, [80, 75, 90]),
+      new Student("Feith Chepwogen", 19, [70, 85, 65]),
+      new Student("Alice Ekeno", 20, [90, 80, 95])
+    ];
+    for (const student of students) {
+      console.log("Student information:");
+      console.log("Name:", student.name);
+      console.log("Age:", student.age);
+      console.log("Grades:", student.grades);
+      const averageGrade = student.calculateAverageGrade();
+      console.log("Average Grade:", averageGrade);
+      const passingStatus = student.hasPassed() ? "Passed" : "Failed";
+      console.log("Passing Status:", passingStatus);
+      student.displayHighestGrade();
+      console.log();
+    }
+   
