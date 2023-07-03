@@ -200,4 +200,19 @@ for stage in [stage1, stage2]:
 
 
 
+class Product:
+def __init__(self,name,price,quantity) :
+self.name=name
+self.price=price
+self.quantity=quantity
+def getTotalValue(self):
+return (float)(self.price*self.quantity)
+
+
+product1=Product("Mango",20,22)
+print(product1.getTotalValue())   
+
+
+
+
 
