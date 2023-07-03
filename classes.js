@@ -239,3 +239,41 @@ class Story {
      const stage1 = new Stage("Open-air stage", "The Great Lawn", 10000);
     const stage2 = new Stage("Indoor stage", "The Concert Hall", 5000);
      console.log("The festival lineup is:");
+
+
+
+
+// 5. Create a class called Product with attributes for name, price, and quantity.
+// Implement a method to calculate the total value of the product (price * quantity).
+// Create multiple objects of the Product class and calculate their total values.
+
+
+
+     class Product {
+      constructor(name, price, quantity) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+      }
+     
+      calculateTotalValue() {
+        if (this.quantity > 0) {
+          return this.price * this.quantity;
+        } else {
+          return 0;
+        }
+      }
+    }
+     const products = [
+      new Product("pen", 10.5, 100),
+      new Product("Book", 0.5, 150),
+      new Product("sharpener", 0.2, 120)
+    ];
+     let totalValue = 0;
+     for (let i = 0; i < products.length; i++) {
+      if (products[i].quantity > 0) {
+        totalValue += products[i].calculateTotalValue();
+      }
+    }
+     console.log("Total value of all products:", totalValue);
+        
